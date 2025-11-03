@@ -1,0 +1,55 @@
+# Simple Restaurant Program in Python
+
+def show_menu():
+    print("\n----- Welcome to Python Restaurant -----")
+    print("Menu:")
+    print("1. Pizza        - ₹250")
+    print("2. Burger       - ₹120")
+    print("3. Pasta        - ₹180")
+    print("4. Sandwich     - ₹100")
+    print("5. Cold Drink   - ₹60")
+    print("6. Exit")
+    print("----------------------------------------")
+
+
+def restaurant_program():
+    menu = {
+        1: ("Pizza", 250),
+        2: ("Burger", 120),
+        3: ("Pasta", 180),
+        4: ("Sandwich", 100),
+        5: ("Cold Drink", 60)
+    }
+
+    order = []
+
+    while True:
+        show_menu()
+        choice = int(input("Enter your choice (1-6): "))
+
+        if choice == 6:
+            break
+
+        if choice in menu:
+            qty = int(input(f"Enter quantity of {menu[choice][0]}: "))
+            total = menu[choice][1] * qty
+            order.append((menu[choice][0], qty, menu[choice][1], total))
+            print(f"{menu[choice][0]} added to your order.")
+        else:
+            print("Invalid choice, please select again.")
+
+    # Bill Section
+    print("\n----- BILL -----")
+    grand_total = 0
+    for item in order:
+        print(f"{item[0]} (x{item[1]}) - ₹{item[3]}")
+        grand_total += item[3]
+
+    print("----------------")
+    print(f"Total Amount: ₹{grand_total}")
+    print("Thank you for dining with us!")
+    print("------------------------------")
+
+
+# Run the program
+restaurant_program()
